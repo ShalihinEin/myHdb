@@ -1,130 +1,62 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<html data-ng-app="TodoMain">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
 
-    http://www.apache.org/licenses/LICENSE-2.0
+    <title>myHdb</title>
+    <link rel="stylesheet" href="Content/reset.css" />
+    <link rel="stylesheet" href="Content/toastr.css" />
+    <link rel="stylesheet" href="Content/todo.css" />
+</head>
+<body>
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>myHdb</title>
-		
-    </head>
-    <body>
-        <div class="app">
-		<fieldset>
-        <legend> Dairly Pizza </legend>
-        <table>
-            <tr>
-                <td> <label for="Pizza"> Pizza : </td>
-                <td><select name="Pizza">
-                            <option>Hawaiian           $10.00 </option>
-                            <option>Meat Monster       $12.00 </option>
-                            <option>Cheese Royal       $8.00  </option>
-                            <option>Chilli Beef Hotdog $15.00 </option>
-                        </select>
-                </td>
-                
-            </tr>
-            <tr>
-                <td> <label for="Crust"> Crust : </td>
-                
-                <td> 
-                <input type="radio" name='crust' value="1" /> Thin Crust
-                <input type='radio' name ='crust' value ='2'/> Stuffed crust 
-                <input type='radio' name ='crust' value ='3'/> Cheesy Volcano
-                </td>
-                
-            </tr>
-           
-            <tr>
-                <td> <label for="Sauces"> Sauces : </td>
-                <td>
-                        <input type='checkbox'/> Parmesan Cheese
-                        <input type='checkbox'/> Chilli Flakes
-                        <input type='checkbox'/> Include Menu
-                </td>
-                
-            </tr>
-            
-        </table>
-    </fieldset>
-        <fieldset>
-        <legend> Customer Information </legend>
-        <table>
-            <tr>
-                <td> <label for="Name"> Name : </td>
-                <td>
-                        <textarea></textarea>
-                    </td>
-                
-            </tr>
-            
-            <tr>
-                <td> <label for="MS"> Marital Status : </label></td>
-                
-                <td> <input type="radio" name="ms" value="1" /> Single
-                <input type='radio' name ='ms' value ='2'/> Married 
-                <input type='radio' name ='ms' value ='3'/> Divorced</td>
-                
-            </tr>
-            
-            <tr>
-                <td> <label for="WE"> Work Experience : </td>
-                <td>
-                   <textarea></textarea>
-                </td>
-            </tr>
-            
-            <tr>
-                <td> <label for="RA"> Residential Address : </td>
-                <td>
-                   <textarea></textarea>
-                </td>
-            </tr>
-            
-            <tr>
-                <td> <label for="HP"> Home Phone : </td>
-                <td>
-                   <textarea></textarea>
-                </td>
-            </tr>
-            
-            <tr>
-                <td> <label for="WE"> Remarks : </td>
-                <td>
-                   <textarea cols='40' rows='6'></textarea>
-                </td>
-            </tr>
-            
-            </table>
-        </fieldset>
-    </br>
-       
-    <button><a href='payment.html'>Make Payment</a></button>
-</form>
+    <div id="applicationHost" class="ng-cloak">
+	<header>
+            <h1>My HDB App</h1>
+	</header>
+			<br><br><br><br>
+    <form name="form1" method="post" action="payment.html">     
+		<div style="padding-left:75px;">
+			<label>Total Salary : </label>$<input type="text" name='salary' placeholder=" Your Total Salary" /><br><br>
+			<label name="banks" >Outstanding loans : </label><br><br>
+				<input type='checkbox' value='DBS' /> DBS/POSB
+				&nbsp;&nbsp;&nbsp;
+				<input type='checkbox' value='OCBC' /> OCBC
+				&nbsp;&nbsp;&nbsp;
+				<input type='checkbox' value='UOB'/> UOB
+				&nbsp;&nbsp;&nbsp;
+				<input type='checkbox' value='HSBC'/> HSBC
 		</div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-		<script type="text/javascript" src="phonegap.js"></script>
-    </body>
+		<br> <br>
+			<section>
+				<div class="controlLinks">
+					<input name="submit" value="Submit" type="submit">
+				</div>
+			</section>
+	</form>
+        <footer>
+            <div data-ng-show="itemsLeftMessage()">{{itemsLeftMessage()}}</div>
+            <a href="#" data-ng-show="archiveCompletedMessage()" data-ng-click="archiveCompletedItems()">{{archiveCompletedMessage()}}</a>
+        </footer>
+
+    </div>
+
+    <!-- 3rd party libraries -->
+    <script src="Scripts/jquery-1.8.3.min.js"></script>
+    <script src="Scripts/q.js"></script>
+    <script src="Scripts/breeze.debug.js"></script>
+    <script src="Scripts/breeze.savequeuing.js"></script>
+    <script src="Scripts/toastr.js"></script>
+    <script src="Scripts/angular.js"></script>
+
+    <!-- App libraries -->
+    <script src="Scripts/app/main.js"></script>
+    <script src="Scripts/app/logger.js"></script>
+    <script src="Scripts/app/dataservice.js"></script>
+    <script src="Scripts/app/controller.js"></script>
+	<script type="text/javascript" src="phonegap.js"></script>
+
+</body>
 </html>

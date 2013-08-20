@@ -1,94 +1,96 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
-<html lang="en">
+<html data-ng-app="TodoMain">
 <head>
-<title>myHdb</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-<link rel="stylesheet" type="text/css" href="css/index.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
 
+    <title>myHdb</title>
+    <link rel="stylesheet" href="Content/reset.css" />
+    <link rel="stylesheet" href="Content/toastr.css" />
+    <link rel="stylesheet" href="Content/todo.css" />
 </head>
-
 <body>
-<div class="app">
-<div class="wideBox">
-  <h1>Online Payment</h1>
+
+<div id="applicationHost" class="ng-cloak">
+
+<header>
+  <h1>My HDB</h1>
+</header>
+<br><br><br><br>
+<center>
+	<div>
+		<form id="orderForm" action="" method="get">
+
+		  <fieldset>
+			<legend><u>Billing details</u></legend>
+			<br>
+			<table>
+			  <tr>
+			  <td>
+				<label for="billingName">Name</label>
+			  </td>
+			  <td>
+				<input type="text" name="billingName" id="billingName" placeholder="First Last" required="required" maxlength="50" />
+			  </td>
+			  </tr><tr>
+			  <td>
+				<label for="emailAddress">Email address</label>
+			  </td>
+			  <td>
+				<input type="email" name="emailAddress" id="emailAddress" placeholder="name@example.com" required="required" autofocus="autofocus" maxlength="50" />
+			  </td>
+			  </tr><tr>
+			  <td>
+				<label for="billingAddress">Address</label>
+			  </td>
+			  <td>
+				<textarea name="billingAddress" id="billingAddress" placeholder="House number, street, city, state" required="required" maxlength="150"></textarea>
+			  </td>
+			  </tr><tr>
+			  <td>
+				<label for="billingPostcode">Postal code</label>
+			  </td>
+			  <td>
+				<input type="text" name="billingPostcode" id="billingPostcode" placeholder="Post code or zip code" required="required" maxlength="20" />
+			  </td>
+			  </tr><tr>
+			  <td>
+				<label for="billingCountry">Country</label>
+			  </td>
+			  <td>
+				<select name="billingCountry" id="billingCountry"><option>Singapore</option><option>Canada</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select>
+			  </td>
+			  </tr><tr>
+			  <td>
+				<label for="phone">Phone <em>(optional)</em></label>
+			  </td>
+			  <td>
+				<input type="tel" name="phone" id="phone" placeholder="Include country prefix, e.g. +65" maxlength="20" />
+			  </td>
+			  </tr>
+			</table>
+			</fieldset>
+		</form>
+	</div>
+</center>
+<br><br><br><br>
 </div>
 
-<form id="orderForm" action="" method="get">
+    <!-- 3rd party libraries -->
+    <script src="Scripts/jquery-1.8.3.min.js"></script>
+    <script src="Scripts/q.js"></script>
+    <script src="Scripts/breeze.debug.js"></script>
+    <script src="Scripts/breeze.savequeuing.js"></script>
+    <script src="Scripts/toastr.js"></script>
+    <script src="Scripts/angular.js"></script>
 
-  <fieldset>
-    <legend>Billing details</legend>
-
-    <ul>
-
-      <li>
-        <label for="billingName">Name</label>
-        <input type="text" name="billingName" id="billingName" placeholder="First Last" required="required" maxlength="50" />
-      </li>
-      
-      <li>
-        <label for="emailAddress">Email address</label>
-        <input type="email" name="emailAddress" id="emailAddress" placeholder="name@example.com" required="required" autofocus="autofocus" maxlength="50" />
-      </li>
-
-      <li>
-        <label for="billingAddress">Address</label>
-        <textarea name="billingAddress" id="billingAddress" placeholder="House number, street, city, state" required="required" maxlength="150"></textarea>
-      </li>
-
-      <li>
-        <label for="billingPostcode">Postal code</label>
-        <input type="text" name="billingPostcode" id="billingPostcode" placeholder="Post code or zip code" required="required" maxlength="20" />
-      </li>
-
-      <li>
-        <label for="billingCountry">Country</label>
-        <select name="billingCountry" id="billingCountry"><option>Singapore</option><option>Canada</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select>
-      </li>
-
-      <li>
-        <label for="phone">Phone <em>(optional)</em></label>
-        <input type="tel" name="phone" id="phone" placeholder="Include country prefix, e.g. +65" maxlength="20" />
-      </li>
-
-    </ul>
-
-  </fieldset>
-
-  <fieldset>
-    <legend>Payment details</legend>
-
-    <ul>
-
-      <li>
-        <label for="cardNumber">Card number</label>
-        <input type="text" name="cardNumber" id="cardNumber" placeholder="As shown on the front of your card" required="required" maxlength="30" pattern="[\d\ ]{12,}" />
-      </li>
-
-      <li>
-        <label for="cvvCode">CVV code</label>
-        <input type='text'/>
-      </li>
-
-      <li>
-        <label for="expiryDate">Expiry date</label>
-        <input type='text'/>
-      </li>
-
-    </ul>
-
-      </fieldset>
-   
-</form>
-</div>
-<script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-		<script type="text/javascript" src="phonegap.js"></script>
+    <!-- App libraries -->
+    <script src="Scripts/app/main.js"></script>
+    <script src="Scripts/app/logger.js"></script>
+    <script src="Scripts/app/dataservice.js"></script>
+    <script src="Scripts/app/controller.js"></script>
+	<script type="text/javascript" src="phonegap.js"></script>
     </body>
+	
 </html>
