@@ -11,31 +11,39 @@
     <link rel="stylesheet" href="Content/todo.css" />
 </head>
 <body>
-
-    <div id="applicationHost" data-ng-controller="TodoCtrl" class="ng-cloak">
+<center>
+    <div id="applicationHost" class="ng-cloak">
 	<header>
             <h1>My HDB App</h1>
 	</header>
 			<br><br><br><br>
-    <form name="form1" method="post" action="payment.html">     
-		<div style="padding-left:75px;">
-			<label>Total Salary : </label>$<input type="text" name='salary' placeholder=" Your Total Salary" /><br><br>
+    <form name="form1" method="post" action="payment.html">
+	<table>
+	<tr><td>
+			<label>Total Salary : </label>$<input type="text" name='salary' placeholder=" Your Total Salary" style="width:110px;" /><br><br>
+		</td>
+	</tr>
+	<tr><td>
 			<label name="banks" >Outstanding loans : </label><br><br>
+			<table>
+				<tr><td>
 				<input type='checkbox' value='DBS' /> DBS/POSB
-				&nbsp;&nbsp;&nbsp;
+				</td><td>
 				<input type='checkbox' value='OCBC' /> OCBC
-				&nbsp;&nbsp;&nbsp;
+				</td></tr>
+				<tr><td>
 				<input type='checkbox' value='UOB'/> UOB
-				&nbsp;&nbsp;&nbsp;
+				</td><td>
 				<input type='checkbox' value='HSBC'/> HSBC
-		</div>
-		<br> <br>
-			<section>
-				<div class="controlLinks">
-					<input name="submit" value="Submit" type="submit">
-				</div>
-			</section>
+				</td></tr>
+			</table>
+			<br><br>
+			<input name="submit" value="Submit" type="submit">
+		</td>
+	</tr>
+	</table>
 	</form>
+	<br><br><br><br>
         <footer>
             <div data-ng-show="itemsLeftMessage()">{{itemsLeftMessage()}}</div>
             <a href="#" data-ng-show="archiveCompletedMessage()" data-ng-click="archiveCompletedItems()">{{archiveCompletedMessage()}}</a>
@@ -57,6 +65,6 @@
     <script src="Scripts/app/dataservice.js"></script>
     <script src="Scripts/app/controller.js"></script>
 	<script type="text/javascript" src="phonegap.js"></script>
-
+</center>
 </body>
 </html>
