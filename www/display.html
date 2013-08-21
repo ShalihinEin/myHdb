@@ -17,33 +17,46 @@
             <h1>My HDB App</h1>
 	</header>
 			<br><br><br><br>
-    <form name="form1" method="GET" action="display.html">
-	<table>
-	<tr><td>
-			<label>Total Salary : </label>$<input type="number" name='salary' style="width:100px;" /><br><br>
-		</td>
-	</tr>
-	<tr><td>
-			<label>Outstanding loans : </label><br><br>
-			<table>
-				<tr><td>
-				<input type='checkbox' value='DBS' name="banks[]" /> DBS/POSB
-				</td><td>
-				<input type='checkbox' value='OCBC' name="banks[]" /> OCBC
-				</td></tr>
-				<tr><td>
-				<input type='checkbox' value='UOB' name="banks[]" /> UOB
-				</td><td>
-				<input type='checkbox' value='HSBC' name="banks[]" /> HSBC
-				</td></tr>
-			</table>
-			<br><br>
-			<input type="submit">
-		</td>
-	</tr>
-	</table>
-	</form>
-	<br><br><br><br>
+<script type="text/javascript">
+<!-- HIDE FROM INCOMPATIBLE BROWSERS
+if (window != top)
+ top.location.href=location.href;
+
+var formData = location.search;
+formData = formData.substring(1, formData.length);
+
+while (formData.indexOf("+") != -1) {
+ formData = formData.replace("+", " ");
+}
+
+formData = unescape(formData);
+var formArray = formData.split("&");
+
+/*
+for (var i=0; i < formArray.length; ++i) {
+ document.writeln(formArray[i] + "<br />");
+}*/
+var array = [];
+for (var i=0; i < formArray.length; ++i) {
+ var x = formArray[i].split('=')[1];
+ array.push(x);
+}
+// STOP HIDING FROM INCOMPATIBLE BROWSERS -->
+</script>
+<table>
+<tr><td>
+<p>Your total salary range : <script>document.writeln("$" + array[0]);</script></p>
+</td></tr>
+<tr><td><br>
+<p>Your outstanding loans : </p></td>
+</tr><tr><td>
+<br>
+<script>for(var i = 1; i< array.length; i++){document.writeln("- " + array[i] + "<br/>");}</script>
+</td></tr>
+</table>
+<br><br>
+<a href="index.html">Back </a>
+<br><br>
         <footer>
             <div data-ng-show="itemsLeftMessage()">{{itemsLeftMessage()}}</div>
             <a href="#" data-ng-show="archiveCompletedMessage()" data-ng-click="archiveCompletedItems()">{{archiveCompletedMessage()}}</a>
