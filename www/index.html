@@ -9,21 +9,52 @@
     <link rel="stylesheet" href="Content/reset.css" />
     <link rel="stylesheet" href="Content/toastr.css" />
     <link rel="stylesheet" href="Content/todo.css" />
+    
+    <script type="text/javascript">
+            var RE_SALARY = /^[\d]{3,10}$/;
+
+            function validate(form)
+            {
+                var salary = form.salary.value;
+
+                var sal =document.getElementById("sal");
+                sal.innerHTML="";
+                
+                var check = 0;
+                if (salary === "")
+                {
+                    sal.innerHTML= "<p style='color:red;'><i>Please enter your<br>Total Salary.</i></p>";
+                    check++;
+                }
+                else if (!RE_SALARY.test(salary))
+                {
+                    sal.innerHTML= "<p style='color:red;'><i>Invalid entry.<br> Please Re-enter.</i></p>";
+                    check++;
+                }
+                
+                if (check > 0) {
+                    return false;
+                }
+                else{
+                return true;
+                }
+            }
+        </script>
 </head>
 <body>
 <center>
     <div id="applicationHost" class="ng-cloak">
 	<header>
-            <h1>My HDB App</h1>
+            <h1>My HDB</h1>
 	</header>
 			<br><br><br><br>
-    <form name="form1" method="GET" action="display.html">
+    <form name="form1" method="GET" action="display.html" onSubmit="return validate(this);">
 	<table>
 	<tr><td>
 			<label>Total Salary : </label>$<input type="number" name='salary' style="width:100px;" /><br><br>
 		</td>
 	</tr>
-	<tr><td>
+        <tr><td>
 			<label>Outstanding loans : </label><br><br>
 			<table>
 				<tr><td>
@@ -38,7 +69,16 @@
 				</td></tr>
 			</table>
 			<br><br>
-			<input type="submit">
+                        <table>
+                            <tr>
+                                <td width="80" height="100">
+                                    <input type="submit">
+                                </td>
+                                <td>
+                                    <div id="sal" style="text-align: center;"></div>
+                                </td>
+                            </tr>
+                        </table>
 		</td>
 	</tr>
 	</table>

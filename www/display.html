@@ -6,17 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
 
     <title>myHdb</title>
+    <link rel="stylesheet" href="css/basic.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="Content/reset.css" />
     <link rel="stylesheet" href="Content/toastr.css" />
     <link rel="stylesheet" href="Content/todo.css" />
-</head>
-<body>
-<center>
-    <div id="applicationHost" class="ng-cloak">
-	<header>
-            <h1>My HDB App</h1>
-	</header>
-			<br><br><br><br>
+    
 <script type="text/javascript">
 <!-- HIDE FROM INCOMPATIBLE BROWSERS
 if (window != top)
@@ -41,21 +35,109 @@ for (var i=0; i < formArray.length; ++i) {
  var x = formArray[i].split('=')[1];
  array.push(x);
 }
+var content = array.length;
+var salary = parseInt(array[0]);
+
+var dbs = false;
+var ocbc = false;
+var hsbc = false;
+var uob = false;
+var show = true;
+if(salary < 1000){
+    show = false;
+}
+
+function compare()
+            {
+                var cop = document.getElementById('compare');
+                cop.innerHTML="Harrow!";
+                // insert AJAX here!!
+            }
 // STOP HIDING FROM INCOMPATIBLE BROWSERS -->
+
 </script>
+    
+</head>
+<body>
+<center>
+    <div id="applicationHost" class="ng-cloak">
+	<header>
+            <h1>My HDB</h1>
+	</header>
+<br><br>
 <table>
-<tr><td>
-<p>Your total salary range : <script>document.writeln("$" + array[0]);</script></p>
+<tr><td><hr>
+<p>Your total salary is <script>document.writeln("$" + salary);</script></p>
 </td></tr>
 <tr><td><br>
-<p>Your outstanding loans : </p></td>
+    <script>
+            if(content > 1){
+                document.writeln("Your outstanding loans:");
+            }
+            else{
+                document.writeln("You have no outstanding loans.");
+            }
+    </script>
+    </td>
 </tr><tr><td>
 <br>
-<script>for(var i = 1; i< array.length; i++){document.writeln("- " + array[i] + "<br/>");}</script>
+<script>
+    if(content > 1){
+        for(var i = 1; i< array.length; i++){
+            if(array[i] === "DBS"){
+                dbs = true;
+            }
+            if(array[i] === "OCBC"){
+                ocbc = true;
+            }
+            if(array[i] === "HSBC"){
+                hsbc = true;
+            }
+            if(array[i] === "UOB"){
+                uob = true;
+            }
+            document.writeln("- " + array[i] + "<br>");
+        }
+        document.writeln("<br>");
+    }
+</script>
 </td></tr>
+<tr>
+    <td>
+        <script>
+            if(salary < 1000){
+                document.writeln("You are not eligible for any HDB flats.");
+            }
+            else if(salary < 2000){
+                document.writeln("You are eligible for a 1-room studio flat.");
+            }
+            else if(salary < 5000){
+                document.writeln("You are eligible for a 3-room flat.");
+            }
+            else if(salary >= 5000){
+                document.writeln("You are eligible for a 5-room flat.");
+            }
+        </script>
+      </td>
+    </tr>
+    <tr>
+        <td><br>
+            <a href="index.html" style="font-size:12px; text-align: right;"><i>Edit Your Inputs</i></a>
+            <br> <hr>
+        </td>
+    </tr>
 </table>
 <br><br>
-<a href="index.html">Back </a>
+<script>
+    if(show){
+</script>
+
+<div id="compare">
+    <button onClick="compare();"> Compare Bank Loans </button>
+</div>
+<script>
+        }
+</script>
 <br><br>
         <footer>
             <div data-ng-show="itemsLeftMessage()">{{itemsLeftMessage()}}</div>
